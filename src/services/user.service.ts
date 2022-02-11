@@ -33,6 +33,9 @@ async function signup(credentials: ICredentials) {
             email
         }
     });
+    if (!user) {
+        throw new Error('signup service error')
+    }
     return user
     // return _saveLocalUser(user)
 }
