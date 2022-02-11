@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "careologyexam",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "D:\\AudioLab\\Desktop\\Coding_Academy\\Jobs-Exams\\careology-exam\\amplify\\backend\\api\\careologyexam\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authcareologyexam571d42b0"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-02-17T17:19:05.651Z",
+        "keyDescription": "todo-app"
+      }
+    ]
+  }
+}

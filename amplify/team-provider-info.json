@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-careologyexam-dev-190749-authRole",
+      "UnauthRoleArn": "arn:aws:iam::709220905055:role/amplify-careologyexam-dev-190749-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::709220905055:role/amplify-careologyexam-dev-190749-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-careologyexam-dev-190749-deployment",
+      "UnauthRoleName": "amplify-careologyexam-dev-190749-unauthRole",
+      "StackName": "amplify-careologyexam-dev-190749",
+      "StackId": "arn:aws:cloudformation:eu-central-1:709220905055:stack/amplify-careologyexam-dev-190749/fcaaa470-8a93-11ec-82a5-0a478d6624aa",
+      "AmplifyAppId": "d2fg4xume8d7pj"
+    },
+    "categories": {
+      "auth": {
+        "careologyexam571d42b0": {}
+      }
+    }
+  }
+}
