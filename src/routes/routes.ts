@@ -2,8 +2,8 @@ import { About } from "../pages/About";
 import { ConfrimSignin } from "../pages/ConfrimSignin";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
-import { MainApp } from "../pages/MainApp";
 import { Signup } from "../pages/Signup";
+import { TodoApp } from "../pages/TodoApp";
 
 interface IRoutes {
     path: string,
@@ -11,6 +11,10 @@ interface IRoutes {
 }
 
 const routes: IRoutes[] = [
+    {
+        path: '/todo-app',
+        component: TodoApp,
+    },
     {
         path: '/about',
         component: About,

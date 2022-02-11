@@ -1,6 +1,7 @@
 import { Auth } from 'aws-amplify';
 import { FormEvent } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { eventBusService } from '../services/event-bus.service';
 import { userService } from '../services/user.service';
@@ -8,6 +9,7 @@ import { RootState } from '../store'
 
 export const ConfrimSignin = () => {
 
+    const history = useHistory()
     const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
 
     const [confrim, handleChange] = useForm({
@@ -17,10 +19,9 @@ export const ConfrimSignin = () => {
     const onConfrimSubmit = async (ev: FormEvent<HTMLFormElement> | null = null) => {
         try {
             if (ev) ev.preventDefault();
-            console.log('loggedInUser', loggedInUser)
             await userService.confirmSignUp(loggedInUser.username, confrim.code)
             eventBusService.showSuccessMsg(`Verfication Complete !`)
-            // history.push('/rates')
+            history.push('/todo-app')
         } catch (error) {
             console.log('error confrim user ', error);
             eventBusService.showSuccessMsg(`Incorrect Verfication Code!`)

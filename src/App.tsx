@@ -35,38 +35,6 @@ Amplify.configure(awsExports);
 
 function App() {
 
-  useEffect(() => {
-    // signin()
-    // signUp()
-  }, [])
-
-  const signin = async () => {
-    try {
-      const user = await Auth.signIn('test4', '12345678');
-      console.log('user', user)
-    } catch (error) {
-      console.log('error signing in', error);
-    }
-  }
-
-  const signUp = async () => {
-    try {
-      const { user } = await Auth.signUp({
-        username: 'test8',
-        password: '12345678',
-        attributes: {
-          email: 'looply3@gmail.com',          // optional
-          // phone_number: '1234567891',   // optional - E.164 number convention
-          // other custom attributes 
-        }
-      });
-      // await Auth.confirmSignUp('test4', '375707');
-      console.log(user);
-    } catch (error) {
-      console.log('error signing up:', error);
-    }
-  }
-
   return (
     <Router>
       <UserMsg />

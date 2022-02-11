@@ -46,6 +46,7 @@ export function onLogout() {
                 type: 'SET_USER',
                 user: null
             })
+            eventBusService.showSuccessMsg(`Bye Bye!`)
         } catch (err) {
             console.log('Cannot logout', err)
             eventBusService.showErrorMsg('Sorry cannot Logout!')

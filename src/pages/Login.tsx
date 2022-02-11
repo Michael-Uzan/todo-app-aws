@@ -1,12 +1,13 @@
 import { Auth } from 'aws-amplify';
 import React, { FormEvent } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch, } from 'react-redux';
 import { onLogin } from '../store/actions/userActions';
 
 export const Login = () => {
 
+    const history = useHistory()
     const dispatch = useDispatch()
 
     const [credentials, handleChange] = useForm({
@@ -18,7 +19,7 @@ export const Login = () => {
         try {
             if (ev) ev.preventDefault();
             await dispatch(onLogin(credentials))
-            // history.push('/rates')
+            history.push('/todo-app')
         } catch (error) {
             console.log('error signing in', error);
         }
