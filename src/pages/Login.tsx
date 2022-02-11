@@ -18,8 +18,7 @@ export const Login = () => {
         try {
             if (ev) ev.preventDefault();
             await dispatch(onLogin(credentials))
-            const user = await Auth.signIn(username, password);
-            console.log('user logedin sucess', user)
+            // history.push('/rates')
         } catch (error) {
             console.log('error signing in', error);
         }
