@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-// import { currencyRateReducer } from './reducers/currencyRateReducer';
+import { todoReducer } from './reducers/todoReducer';
 import { userReducer } from './reducers/userReducer';
 
 declare global {
@@ -15,7 +15,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 // Combining reducers into one
 const rootReducer = combineReducers({
   // currencyRateModule: currencyRateReducer,
-  userModule: userReducer
+  userModule: userReducer,
+  todoModule: todoReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

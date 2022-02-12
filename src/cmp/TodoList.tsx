@@ -1,16 +1,22 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Observable } from 'redux';
 import { listTodos } from '../graphql/queries';
 import { ITodo } from '../interface/ITodo';
 import { eventBusService } from '../services/event-bus.service';
 import { todoService } from '../services/todo.service';
+import { RootState } from '../store';
+import { getTodos } from '../store/actions/todoActions';
 import { GraphQLResult } from './ListTodo';
 import { TodoPreview } from './TodoPreview';
 
 export const TodoList = () => {
 
-    const [todos, setTodos] = useState<GraphQLResult>();
+    // const [todos, setTodos] = useState<GraphQLResult>();
+
+    const dispatch = useDispatch()
+    const todos: any = useSelector((state: RootState) => state.todoModule.todos)
 
     useEffect(() => {
         loadTodos();
@@ -18,11 +24,12 @@ export const TodoList = () => {
 
     const loadTodos = async () => {
         try {
-            const todos: GraphQLResult = await todoService.query()
-            setTodos(todos)
+            console.log('loading todos')
+            await dispatch(getTodos())
+            // const todos: GraphQLResult = await todoService.query()
+            // setTodos(todos)
         } catch (err) {
             console.log('canot load todos', err)
-            eventBusService.showErrorMsg('Cannot load todos!')
         }
     }
 
