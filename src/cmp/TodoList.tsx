@@ -8,7 +8,6 @@ import { eventBusService } from '../services/event-bus.service';
 import { todoService } from '../services/todo.service';
 import { RootState } from '../store';
 import { getTodos } from '../store/actions/todoActions';
-import { GraphQLResult } from './ListTodo';
 import { Loading } from './Loading';
 import { TodoPreview } from './TodoPreview';
 
@@ -33,7 +32,7 @@ export const TodoList = () => {
     if (!todos) return <Loading />
 
     if (!todos.length) return (
-        <section className="todo-list">
+        <section className="todo-list tac">
             <h1> No Todos to show... add todo to start...</h1>
         </section>
     )

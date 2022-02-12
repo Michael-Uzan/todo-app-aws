@@ -1,7 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
-import { GraphQLResult } from "../cmp/ListTodo";
 import { createTodo, deleteTodo, updateTodo } from "../graphql/mutations";
 import { getTodo, listTodos } from "../graphql/queries";
+import { GraphQLResult } from "../interface/IGraphqlResult";
 import { ITodo } from "../interface/ITodo";
 
 export const todoService = {
