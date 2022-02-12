@@ -29,8 +29,8 @@ export const AddTodo = () => {
 
     const { name, description } = todo
     return (
-        <section className="add-todo">
-            <form onSubmit={(ev) => onAddTodo(ev)}>
+        <section className="add-todo ">
+            <form className="form flex direction-col" onSubmit={(ev) => onAddTodo(ev)}>
                 <input
                     type="text"
                     name="name"
