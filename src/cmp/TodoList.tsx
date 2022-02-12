@@ -9,6 +9,7 @@ import { todoService } from '../services/todo.service';
 import { RootState } from '../store';
 import { getTodos } from '../store/actions/todoActions';
 import { GraphQLResult } from './ListTodo';
+import { Loading } from './Loading';
 import { TodoPreview } from './TodoPreview';
 
 export const TodoList = () => {
@@ -29,9 +30,7 @@ export const TodoList = () => {
         }
     }
 
-    if (!todos) return <div>Loading</div>
-
-    // const todoToShow = todos?.data?.listTodos;
+    if (!todos) return <Loading />
 
     if (!todos.length) return (
         <section className="todo-list">

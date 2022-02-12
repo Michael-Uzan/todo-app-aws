@@ -29,6 +29,7 @@ export const AppHeader = () => {
                 <button onClick={onGoBack}>Back</button>
                 {!loggedInUser && <NavLink activeClassName="active" exact to="/login" >Login</NavLink>}
                 <NavLink activeClassName="active" exact to="/todo-app" >Todo</NavLink>
+                {loggedInUser && <NavLink activeClassName="active" exact to="/dashboard" >Dashboard</NavLink>}
                 {loggedInUser && <NavLink onClick={onLogoutClick} activeClassName="active" exact to="/" >Logout</NavLink>}
             </nav>
         </header>

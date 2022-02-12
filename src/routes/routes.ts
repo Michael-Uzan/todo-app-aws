@@ -1,5 +1,5 @@
-import { About } from "../pages/About";
 import { ConfrimSignin } from "../pages/ConfrimSignin";
+import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { PageNotFound } from "../pages/PageNotFound";
@@ -22,10 +22,6 @@ const routes: IRoutes[] = [
         component: TodoApp,
     },
     {
-        path: '/about',
-        component: About,
-    },
-    {
         path: '/confrim-signin',
         component: ConfrimSignin,
     },
@@ -36,6 +32,10 @@ const routes: IRoutes[] = [
     {
         path: '/login',
         component: Login,
+    },
+    {
+        path: '/dashboard',
+        component: Dashboard,
     },
     {
         path: '/',
