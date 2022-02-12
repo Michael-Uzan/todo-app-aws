@@ -7,5 +7,5 @@ type Todo @model {
   name: String!
   description: String
   isDone: Boolean!
-  ownerId: String!
 }
+

@@ -1,3 +1,4 @@
+import { CognitoUser } from 'amazon-cognito-identity-js'
 import { Auth } from 'aws-amplify'
 import { ICredentials } from '../interface/ICredentials'
 import { httpService } from './http.service'
@@ -77,7 +78,7 @@ async function logout() {
 //     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 // }
 
-// function _saveLocalUser(user: ICredentials) {
-//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-//     return user
-// }
+function _saveLocalUser(user: CognitoUser) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}

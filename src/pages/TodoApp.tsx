@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { AddTodo } from '../cmp/AddTodo';
+import { TodoList } from '../cmp/TodoList';
 import { RootState } from '../store';
 
 export const TodoApp = () => {
@@ -16,6 +18,8 @@ export const TodoApp = () => {
     return (
         < section className="todo-app" >
             <h1>Todo App</h1>
+            <AddTodo />
+            <TodoList />
         </ section>
     )
 }

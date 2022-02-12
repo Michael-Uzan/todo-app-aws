@@ -1,5 +1,7 @@
-import Amplify, { API, Auth, graphqlOperation } from "aws-amplify";
-// import { withAuthenticator } from '@aws-amplify/ui-react';
+import { API, graphqlOperation } from "aws-amplify";
+import Amplify from '@aws-amplify/core';
+import Auth from '@aws-amplify/auth';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { AppFotter } from './cmp/AppFooter';
 import { AppHeader } from './cmp/AppHeader';
@@ -7,7 +9,22 @@ import { UserMsg } from './cmp/UserMsg';
 import routes from './routes/routes';
 import awsExports from './aws-exports';
 import { useEffect } from "react";
+// import { withAuthenticator } from "@aws-amplify/ui-react";
+
 Amplify.configure(awsExports);
+
+// Auth.configure({
+//   authenticationFlowType: 'USER_SRP_AUTH'
+// })
+
+const client = new AWSAppSyncClient({
+  url: awsExports.aws_appsync_graphqlEndpoint,
+  region: awsExports.aws_appsync_region,
+  auth: {
+    type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+    jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
+  },
+});
 
 // Amplify.configure({
 //   Auth: {
