@@ -18,10 +18,15 @@ export const AppHeader = () => {
         }
     }
 
+    const onGoBack = () => {
+        history.goBack()
+    }
+
     return (
         <header className="full">
             <h3>Hello {loggedInUser ? loggedInUser.username : 'guest'}</h3>
             <nav className="flex justify-center">
+                <button onClick={onGoBack}>Back</button>
                 {!loggedInUser && <NavLink activeClassName="active" exact to="/login" >Login</NavLink>}
                 <NavLink activeClassName="active" exact to="/todo-app" >Todo</NavLink>
                 {loggedInUser && <NavLink onClick={onLogoutClick} activeClassName="active" exact to="/" >Logout</NavLink>}

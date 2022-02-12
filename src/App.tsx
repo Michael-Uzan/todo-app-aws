@@ -9,6 +9,7 @@ import { UserMsg } from './cmp/UserMsg';
 import routes from './routes/routes';
 import awsExports from './aws-exports';
 import { useEffect } from "react";
+import { PageNotFound } from "./pages/PageNotFound";
 // import { withAuthenticator } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsExports);
@@ -58,7 +59,8 @@ function App() {
       <AppHeader />
       <main className="main-container">
         <Switch>
-          {routes.map(route => <Route key={route.path} component={route.component} path={route.path} />)}
+          {routes.map(route => <Route key={route.path} exact component={route.component} path={route?.path} />)}
+          <Route component={PageNotFound} />
         </Switch>
       </main>
       <AppFotter />

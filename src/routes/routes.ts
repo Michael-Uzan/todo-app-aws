@@ -2,6 +2,7 @@ import { About } from "../pages/About";
 import { ConfrimSignin } from "../pages/ConfrimSignin";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
+import { PageNotFound } from "../pages/PageNotFound";
 import { Signup } from "../pages/Signup";
 import { TodoApp } from "../pages/TodoApp";
 
@@ -35,6 +36,7 @@ const routes: IRoutes[] = [
         path: '/',
         component: Home,
     }
+
 ]
 
 export default routes;
