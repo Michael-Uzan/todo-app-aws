@@ -5,6 +5,7 @@ import { Login } from "../pages/Login";
 import { PageNotFound } from "../pages/PageNotFound";
 import { Signup } from "../pages/Signup";
 import { TodoApp } from "../pages/TodoApp";
+import { TodoEdit } from "../pages/TodoEdit";
 
 interface IRoutes {
     path: string,
@@ -12,6 +13,10 @@ interface IRoutes {
 }
 
 const routes: IRoutes[] = [
+    {
+        path: '/todo/edit/:id?',
+        component: TodoEdit,
+    },
     {
         path: '/todo-app',
         component: TodoApp,

@@ -4,6 +4,7 @@ import { eventBusService } from "../services/event-bus.service";
 import { todoService } from "../services/todo.service";
 import { getTodos, updatedTodo } from "../store/actions/todoActions";
 import { utilService } from "../services/util.service";
+import { Link } from "react-router-dom";
 
 interface PropType {
     todo: ITodo
@@ -42,6 +43,7 @@ export const TodoPreview = ({ todo }: PropType) => {
         <section className="todo-preview">
             <button onClick={onRemoveTodo}>X</button>
             <button onClick={onToggleDone}>Mark Done</button>
+            <button><Link to={`todo/edit/${todo.id}`}>Edit</Link></button>
             <div className={` ${getDoneClass()}`}>{todo.name}</div>
             {todo.description ? <p className={` ${getDoneClass()}`}>{todo.description}</p> : <></>}
         </section>
