@@ -13,8 +13,6 @@ import { TodoPreview } from './TodoPreview';
 
 export const TodoList = () => {
 
-    // const [todos, setTodos] = useState<GraphQLResult>();
-
     const dispatch = useDispatch()
     const todos: any = useSelector((state: RootState) => state.todoModule.todos)
 
@@ -26,8 +24,6 @@ export const TodoList = () => {
         try {
             console.log('loading todos')
             await dispatch(getTodos())
-            // const todos: GraphQLResult = await todoService.query()
-            // setTodos(todos)
         } catch (err) {
             console.log('canot load todos', err)
         }
@@ -36,6 +32,12 @@ export const TodoList = () => {
     if (!todos) return <div>Loading</div>
 
     const todoToShow = todos?.data?.listTodos;
+
+    if (!todoToShow.items.length) return (
+        <section className="todo-list">
+            <h1> No Todos to show... add todo to start...</h1>
+        </section>
+    )
 
     return (
         <section className="todo-list">

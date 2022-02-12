@@ -1,10 +1,13 @@
 import { FormEvent } from 'react'
+import { useDispatch } from 'react-redux';
 import { useForm } from '../hooks/useForm';
 import { eventBusService } from '../services/event-bus.service';
 import { todoService } from '../services/todo.service';
+import { getTodos } from '../store/actions/todoActions';
 
 export const AddTodo = () => {
 
+    const dispatch = useDispatch()
     const [todo, handleChange] = useForm({
         name: '',
         description: '',
@@ -15,6 +18,7 @@ export const AddTodo = () => {
         if (ev) ev.preventDefault();
         try {
             const newTodo = await todoService.addTodo(todo)
+            dispatch(getTodos())
             console.log("Success!");
         } catch (err) {
             console.log("Error!", err);
