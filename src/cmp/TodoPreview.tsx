@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-// import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { ITodo } from "../interface/ITodo";
 import { eventBusService } from "../services/event-bus.service";
 import { todoService } from "../services/todo.service";
@@ -35,8 +34,8 @@ export const TodoPreview = ({ todo }: PropType) => {
         }
     }
 
-    const getDoneClass = () => {
-
+    const getDoneClass = (): string => {
+        return todo.isDone ? 'done' : ''
     }
 
     return (
