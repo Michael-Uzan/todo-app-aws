@@ -1,5 +1,33 @@
 .todo-preview {
+    display: grid;
+    row-gap: 1rem;
+    column-gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 2px solid $clr1;
+    padding: 8px;
+    button {
+        a {
+            font-size: rem(12px);
+        }
+    }
+    .name,
+    p {
+        grid-column: 1/4;
+    }
     .done {
         text-decoration: line-through;
+    }
+    @include for-narrow-layout {
+        grid-template-columns: 1fr 1fr 1fr 8fr 16fr;
+        grid-template-rows: 1fr;
+        .name {
+            grid-column: 4/5;
+        }
+        p {
+            grid-column: 5/6;
+        }
     }
 }

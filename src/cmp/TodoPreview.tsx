@@ -42,10 +42,10 @@ export const TodoPreview = ({ todo }: PropType) => {
     return (
         <section className="todo-preview">
             <button onClick={onRemoveTodo}>X</button>
-            <button onClick={onToggleDone}>Mark Done</button>
+            <button onClick={onToggleDone}>Done</button>
             <button><Link to={`todo/edit/${todo.id}`}>Edit</Link></button>
-            <div className={` ${getDoneClass()}`}>{todo.name}</div>
-            {todo.description ? <p className={` ${getDoneClass()}`}>{todo.description}</p> : <></>}
+            <div className={`name ${getDoneClass()}`}>{todo.name}</div>
+            {todo.description ? <p className={` ${getDoneClass()}`}>{todo.description}</p> : <p></p>}
         </section>
     )
 }

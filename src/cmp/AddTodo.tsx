@@ -20,7 +20,7 @@ export const AddTodo = () => {
             const newTodo = await todoService.addTodo(todo)
             dispatch(getTodos())
             console.log("Success!");
-            setTodo({ name: '', description: '' })
+            setTodo({ name: '', description: '', isDone: false })
         } catch (err) {
             console.log("Error!", err);
             eventBusService.showErrorMsg('Cannot add todo!')

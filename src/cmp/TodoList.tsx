@@ -39,9 +39,7 @@ export const TodoList = () => {
 
     return (
         <section className="todo-list">
-            <ul style={{ listStyleType: "none" }}>
-                {todos.map((todo: ITodo) => (<TodoPreview todo={todo} key={todo.id} />))}
-            </ul>
+            {todos.map((todo: ITodo) => (<TodoPreview todo={todo} key={todo.id} />))}
         </section>
     )
 }
