@@ -24,7 +24,6 @@ export const ProgressbarDone = ({ todos }: PropType) => {
 
     return (
         <section className="ProgressbarDone">
-            <h1>Done Tasks</h1>
             <div className="progress-bar">
                 <CircularProgressbarWithChildren
                     className="circularProgressbar"
@@ -35,7 +34,7 @@ export const ProgressbarDone = ({ todos }: PropType) => {
                     })}
                 >
                     <div className="text-done">
-                        {getPrecentDone().toFixed()}% Done
+                        {getPrecentDone().toFixed()}% Done todos
                     </div>
                 </CircularProgressbarWithChildren>
             </div>
