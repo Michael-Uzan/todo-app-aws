@@ -28,7 +28,7 @@ export const Login = () => {
     const { username, password } = credentials;
 
     return (
-        <section className="login">
+        <section className="login-signup tac">
             <h1>Login</h1>
             <form className="login-signup-form flex direction-col align-center justify-center" onSubmit={(ev) => onLoginSubmit(ev)}>
                 <input
@@ -51,11 +51,13 @@ export const Login = () => {
                 <button>Log in</button>
             </form>
             <Link className="to-login-signup" to="/signup">Sign up?</Link>
-            <h3>* For quick login try: </h3>
-            <small>
-                Username: aa <br />
-                Password: 12345678
-            </small>
+            <div className="quick-login">
+                <h3>* For quick login try: </h3>
+                <small>
+                    Username: aa <br />
+                    Password: 12345678
+                </small>
+            </div>
         </section>
     )
 }

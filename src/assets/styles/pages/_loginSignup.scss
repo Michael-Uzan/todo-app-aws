@@ -1,0 +1,25 @@
+.login-signup {
+    margin-bottom: 85px;
+    input {
+        margin-bottom: 15px;
+    }
+    form {
+        margin-bottom: 20px;
+        margin-top: 30px;
+        small {
+            margin-bottom: 15px;
+            color: $clr4;
+        }
+    }
+    button {
+        background-color: $clr1;
+        padding: 8px;
+        color: $bgcColor;
+    }
+    a {
+        margin-bottom: 35px;
+    }
+    .quick-login {
+        margin-top: 50px;
+    }
+}

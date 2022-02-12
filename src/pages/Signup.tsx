@@ -27,7 +27,8 @@ export const Signup = ({ history }: any) => {
     const { username, password, email } = credentials;
 
     return (
-        <section className="login-signup flex direction-col align-center">
+        <section className="login-signup flex tac direction-col align-center">
+            <h1>Signup</h1>
             <form className="login-signup-form flex direction-col align-center justify-center" onSubmit={(ev) => onSignupSubmit(ev)}>
                 <input
                     type="email"
@@ -54,7 +55,8 @@ export const Signup = ({ history }: any) => {
                     onChange={handleChange}
                     required
                 />
-                <small>*Password must contain at least 8 charcters</small>
+                <small>* Password must contain  <br />
+                    at least 8 charcters</small>
                 <button>Signup</button>
             </form>
             <Link className="to-login-signup" to="/login">Login?</Link>
