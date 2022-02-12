@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux"
-import { ITodo } from "../interface/ITodo"
-import { eventBusService } from "../services/event-bus.service"
-import { todoService } from "../services/todo.service"
-import { getTodos } from "../store/actions/todoActions"
+import { useDispatch } from "react-redux";
+// import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { ITodo } from "../interface/ITodo";
+import { eventBusService } from "../services/event-bus.service";
+import { todoService } from "../services/todo.service";
+import { getTodos, updatedTodo } from "../store/actions/todoActions";
+import { utilService } from "../services/util.service";
 
 interface PropType {
     todo: ITodo
@@ -22,11 +24,27 @@ export const TodoPreview = ({ todo }: PropType) => {
         }
     }
 
+    const onToggleDone = async () => {
+        try {
+            // const newTodo: ITodo = utilService.getDeepCopy(todo)
+            todo.isDone = !todo.isDone
+            console.log('new update todo', todo)
+            dispatch(updatedTodo(todo))
+        } catch (err) {
+            console.log('cannot update todo', err)
+        }
+    }
+
+    const getDoneClass = () => {
+
+    }
+
     return (
         <section className="todo-preview">
             <button onClick={onRemoveTodo}>X</button>
-            <div>{todo.name}</div>
-            {todo.description ? <p>{todo.description}</p> : <></>}
+            <button onClick={onToggleDone}>Mark Done</button>
+            <div className={` ${getDoneClass()}`}>{todo.name}</div>
+            {todo.description ? <p className={` ${getDoneClass()}`}>{todo.description}</p> : <></>}
         </section>
     )
 }

@@ -31,9 +31,9 @@ export const TodoList = () => {
 
     if (!todos) return <div>Loading</div>
 
-    const todoToShow = todos?.data?.listTodos;
+    // const todoToShow = todos?.data?.listTodos;
 
-    if (!todoToShow.items.length) return (
+    if (!todos.length) return (
         <section className="todo-list">
             <h1> No Todos to show... add todo to start...</h1>
         </section>
@@ -42,7 +42,7 @@ export const TodoList = () => {
     return (
         <section className="todo-list">
             <ul style={{ listStyleType: "none" }}>
-                {todoToShow.items.map((todo: ITodo) => (<TodoPreview todo={todo} key={todo.id} />))}
+                {todos.map((todo: ITodo) => (<TodoPreview todo={todo} key={todo.id} />))}
             </ul>
         </section>
     )

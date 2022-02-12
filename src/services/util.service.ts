@@ -1,5 +1,6 @@
 export const utilService = {
-    makeId
+    makeId,
+    getDeepCopy
 }
 
 function makeId(length: number = 5): string {
@@ -9,4 +10,8 @@ function makeId(length: number = 5): string {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return txt
+}
+
+function getDeepCopy(item: any): any {
+    return JSON.parse(JSON.stringify(item))
 }
