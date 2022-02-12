@@ -14,7 +14,7 @@ interface IRoutes {
 
 const routes: IRoutes[] = [
     {
-        path: '/todo/edit/:id?',
+        path: '/todo/edit/:todoId?',
         component: TodoEdit,
     },
     {

@@ -1,14 +1,15 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { GraphQLResult } from "../cmp/ListTodo";
 import { createTodo, deleteTodo, updateTodo } from "../graphql/mutations";
-import { listTodos } from "../graphql/queries";
+import { getTodo, listTodos } from "../graphql/queries";
 import { ITodo } from "../interface/ITodo";
 
 export const todoService = {
     query,
     addTodo,
     removeTodo,
-    saveTodo
+    saveTodo,
+    getById
 }
 
 async function query(): Promise<GraphQLResult> {
@@ -56,6 +57,17 @@ async function saveTodo(newTodo: ITodo) {
     } catch (err) {
         console.log("Error! update todo", err);
         throw new Error('canot update todo')
+    }
+}
+
+async function getById(todoId: string) {
+    try {
+        console.log('todoId', todoId)
+        let todo: any = await API.graphql(graphqlOperation(getTodo, { id: todoId }));
+        return todo.data.getTodo
+    } catch (err) {
+        console.log(`Error! get todo ${todoId}`, err);
+        throw new Error('canot get todo')
     }
 }
 

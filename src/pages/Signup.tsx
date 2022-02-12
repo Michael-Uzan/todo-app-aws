@@ -54,6 +54,7 @@ export const Signup = ({ history }: any) => {
                     onChange={handleChange}
                     required
                 />
+                <small>*Password must contain at least 8 charcters</small>
                 <button>Signup</button>
             </form>
             <Link className="to-login-signup" to="/login">Login?</Link>
