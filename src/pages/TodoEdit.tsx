@@ -2,6 +2,7 @@ import { FormEvent, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { Loading } from "../cmp/Loading"
 import { useForm } from "../hooks/useForm"
+import { eventBusService } from "../services/event-bus.service"
 import { todoService } from "../services/todo.service"
 
 interface PropType {
@@ -25,8 +26,14 @@ export const TodoEdit = ({ match }: PropType) => {
 
     const onSaveTodo = async (ev: FormEvent<HTMLFormElement> | null = null) => {
         if (ev) ev.preventDefault();
-        await todoService.saveTodo(todo)
-        history.push('/todo-app')
+        try {
+            await todoService.saveTodo(todo)
+            history.push('/todo-app')
+            eventBusService.showSuccessMsg('Todo Saved!')
+        } catch (err) {
+            console.log('cannot save todo', err)
+            eventBusService.showErrorMsg('Cannot save todo!')
+        }
     }
 
     if (!todo) return <Loading />

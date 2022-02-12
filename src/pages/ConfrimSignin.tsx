@@ -24,7 +24,7 @@ export const ConfrimSignin = () => {
             history.push('/todo-app')
         } catch (error) {
             console.log('error confrim user ', error);
-            eventBusService.showSuccessMsg(`Incorrect Verfication Code!`)
+            eventBusService.showErrorMsg(`Incorrect Verfication Code!`)
         }
     }
 
@@ -34,7 +34,7 @@ export const ConfrimSignin = () => {
             eventBusService.showSuccessMsg(`Sent! check your Email! !`)
             console.log('code resent successfully');
         } catch (err) {
-            eventBusService.showSuccessMsg(`Canot resend code!`)
+            eventBusService.showErrorMsg(`Canot resend code!`)
             console.log('error resending code: ', err);
         }
     }
@@ -42,7 +42,11 @@ export const ConfrimSignin = () => {
     const { code } = confrim
 
     return (
-        <section className="confrim-signin">
+        <section className="confrim-signin tac">
+            <h1>Confrim your account!</h1>
+            <div className="check-email" >
+                <h3>Check youe email and enter the verfication code!</h3>
+            </div>
             <form className="login-signup-form flex direction-col align-center justify-center" onSubmit={(ev) => onConfrimSubmit(ev)}>
                 <input
                     type="text"
@@ -54,7 +58,6 @@ export const ConfrimSignin = () => {
                 />
                 <button>Confrim!</button>
             </form>
-            <p>Check youe email and enter the verfication code!</p>
             <button onClick={resendConfirmationCode}>Send code again!</button>
         </section>
     )
