@@ -2,8 +2,10 @@ button {
     cursor: pointer;
     border: none;
     border-radius: 3px;
-&:hover{
-    background-color: #fff;
+    background-color: $clr1;
+    color: $bgcColor;
+    padding: 8px;
+    &:hover {
+        opacity: 0.8;
+    }
 }
-}
-
