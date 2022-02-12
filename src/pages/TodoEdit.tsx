@@ -33,8 +33,9 @@ export const TodoEdit = ({ match }: PropType) => {
 
     const { name, description } = todo
     return (
-        <section className="todo-edit">
-            <form onSubmit={(ev) => onSaveTodo(ev)}>
+        <section className="todo-edit tac flex direction-col align-center">
+            <h1>Edit Todo</h1>
+            <form className="form flex direction-col" onSubmit={(ev) => onSaveTodo(ev)}>
                 <input
                     type="text"
                     name="name"
