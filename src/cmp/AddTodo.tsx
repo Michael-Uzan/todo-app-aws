@@ -1,25 +1,43 @@
-import { API, graphqlOperation } from 'aws-amplify';
-import React from 'react'
-import { createTodo } from '../graphql/mutations';
+import { FormEvent } from 'react'
+import { useForm } from '../hooks/useForm';
+import { eventBusService } from '../services/event-bus.service';
+import { todoService } from '../services/todo.service';
 
 export const AddTodo = () => {
 
-    const [item, setItem] = React.useState<string>();
+    const [todo, handleChange] = useForm({
+        name: '',
+        description: '',
+        isDone: false
+    })
 
-    const save = async () => {
-        const data = { name: item, isDone: false };
+    const onAddTodo = async (ev: FormEvent<HTMLFormElement> | null = null) => {
+        if (ev) ev.preventDefault();
         try {
-            await API.graphql(graphqlOperation(createTodo, { input: data }));
+            const newTodo = await todoService.addTodo(todo)
             console.log("Success!");
-        } catch (e) {
-            console.log("Error!", e);
+        } catch (err) {
+            console.log("Error!", err);
+            eventBusService.showErrorMsg('Cannot add todo!')
         }
     };
 
+    const { name, description } = todo
     return (
         <section className="add-todo">
-            <input onChange={e => setItem(e.target.value)}></input>
-            <button onClick={() => save()}>SAVE</button>
+            <form onSubmit={(ev) => onAddTodo(ev)}>
+                <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    placeholder="Name"
+                    onChange={handleChange}
+                    required
+                    autoFocus
+                />
+                <textarea name="description" value={description} onChange={handleChange} placeholder="Description..."></textarea>
+                <button>AddTodo</button>
+            </form>
         </section>
     )
 }
