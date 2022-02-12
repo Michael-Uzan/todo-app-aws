@@ -30,7 +30,6 @@ export function onSignup(credentials: ICredentials) {
                 user
             })
             eventBusService.showSuccessMsg(`Enter Verfication Code !`)
-            // eventBusService.showSuccessMsg(`Welcome ${user.username}!`)
         } catch (err) {
             console.log('Cannot signup', err)
             eventBusService.showErrorMsg('Sorry cannot Signup!')

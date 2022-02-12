@@ -2,7 +2,6 @@ import { ConfrimSignin } from "../pages/ConfrimSignin";
 import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
-import { PageNotFound } from "../pages/PageNotFound";
 import { Signup } from "../pages/Signup";
 import { TodoApp } from "../pages/TodoApp";
 import { TodoEdit } from "../pages/TodoEdit";

@@ -1,5 +1,4 @@
-import { Auth } from 'aws-amplify';
-import React, { FormEvent } from 'react'
+import { FormEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch, } from 'react-redux';

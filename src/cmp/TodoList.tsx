@@ -1,11 +1,6 @@
-import { API, graphqlOperation } from 'aws-amplify';
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Observable } from 'redux';
-import { listTodos } from '../graphql/queries';
 import { ITodo } from '../interface/ITodo';
-import { eventBusService } from '../services/event-bus.service';
-import { todoService } from '../services/todo.service';
 import { RootState } from '../store';
 import { getTodos } from '../store/actions/todoActions';
 import { Loading } from './Loading';
@@ -22,7 +17,6 @@ export const TodoList = () => {
 
     const loadTodos = async () => {
         try {
-            console.log('loading todos')
             await dispatch(getTodos())
         } catch (err) {
             console.log('canot load todos', err)

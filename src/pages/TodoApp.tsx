@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AddTodo } from '../cmp/AddTodo';
 import { TodoList } from '../cmp/TodoList';

@@ -19,7 +19,6 @@ export const AddTodo = () => {
         try {
             const newTodo = await todoService.addTodo(todo)
             dispatch(getTodos())
-            console.log("Success!");
             setTodo({ name: '', description: '', isDone: false })
         } catch (err) {
             console.log("Error!", err);

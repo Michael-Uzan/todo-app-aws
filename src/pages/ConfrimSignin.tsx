@@ -1,4 +1,3 @@
-import { Auth } from 'aws-amplify';
 import { FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -32,7 +31,6 @@ export const ConfrimSignin = () => {
         try {
             await userService.resendCode(loggedInUser.username)
             eventBusService.showSuccessMsg(`Sent! check your Email! !`)
-            console.log('code resent successfully');
         } catch (err) {
             eventBusService.showErrorMsg(`Canot resend code!`)
             console.log('error resending code: ', err);

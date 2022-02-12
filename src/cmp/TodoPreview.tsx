@@ -3,7 +3,6 @@ import { ITodo } from "../interface/ITodo";
 import { eventBusService } from "../services/event-bus.service";
 import { todoService } from "../services/todo.service";
 import { getTodos, updatedTodo } from "../store/actions/todoActions";
-import { utilService } from "../services/util.service";
 import { Link } from "react-router-dom";
 
 interface PropType {
@@ -26,9 +25,9 @@ export const TodoPreview = ({ todo }: PropType) => {
 
     const onToggleDone = async () => {
         try {
+            // Mutation problam??
             // const newTodo: ITodo = utilService.getDeepCopy(todo)
             todo.isDone = !todo.isDone
-            console.log('new update todo', todo)
             dispatch(updatedTodo(todo))
         } catch (err) {
             console.log('cannot update todo', err)

@@ -14,7 +14,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 // Combining reducers into one
 const rootReducer = combineReducers({
-  // currencyRateModule: currencyRateReducer,
   userModule: userReducer,
   todoModule: todoReducer
 })
