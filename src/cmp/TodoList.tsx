@@ -1,33 +1,39 @@
 import { API, graphqlOperation } from 'aws-amplify';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Observable } from 'redux';
 import { listTodos } from '../graphql/queries';
+import { ITodo } from '../interface/ITodo';
+import { eventBusService } from '../services/event-bus.service';
+import { todoService } from '../services/todo.service';
 import { GraphQLResult } from './ListTodo';
+import { TodoPreview } from './TodoPreview';
 
 export const TodoList = () => {
 
-    const [list, setList] = React.useState<GraphQLResult>();
+    const [todos, setTodos] = useState<GraphQLResult>();
 
-    React.useEffect(() => {
-        const fetch = async () => {
-            try {
-                let result = await API.graphql(graphqlOperation(listTodos));
-                setList({ data: result });
-                console.log('list', list)
-            } catch (e) {
-                alert(e);
-            }
-        };
-        fetch();
+    useEffect(() => {
+        loadTodos();
     }, []);
 
-    const toDoList = list?.data?.data.listTodos;
-    if (!list) return <div>Loading</div>
+    const loadTodos = async () => {
+        try {
+            const todos: GraphQLResult = await todoService.query()
+            setTodos(todos)
+        } catch (err) {
+            console.log('canot load todos', err)
+            eventBusService.showErrorMsg('Cannot load todos!')
+        }
+    }
+
+    if (!todos) return <div>Loading</div>
+
+    const todoToShow = todos?.data?.listTodos;
+
     return (
         <section className="todo-list">
             <ul style={{ listStyleType: "none" }}>
-                {toDoList.items.map((item: { name: string }, index: number) => (
-                    <li key={index}>{item.name}</li>
-                ))}
+                {todoToShow.items.map((todo: ITodo) => (<TodoPreview todo={todo} key={todo.id} />))}
             </ul>
         </section>
     )
