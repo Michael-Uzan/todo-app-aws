@@ -9,14 +9,14 @@ export const TodoApp = () => {
     const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
 
     if (!loggedInUser) return (
-        <section className="todo-app">
-            <p>Please loggedin to start </p>
+        <section className="todo-app tac flex direction-col align-center">
+            <h1>Please loggin to start </h1>
             <Link to="/login">Login</Link>
         </section>
     )
 
     return (
-        < section className="todo-app" >
+        < section className="todo-app tac flex direction-col align-center" >
             <h1>Todo App</h1>
             <AddTodo />
             <TodoList />
