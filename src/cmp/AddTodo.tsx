@@ -8,7 +8,7 @@ import { getTodos } from '../store/actions/todoActions';
 export const AddTodo = () => {
 
     const dispatch = useDispatch()
-    const [todo, handleChange] = useForm({
+    const [todo, handleChange, setTodo] = useForm({
         name: '',
         description: '',
         isDone: false
@@ -20,6 +20,7 @@ export const AddTodo = () => {
             const newTodo = await todoService.addTodo(todo)
             dispatch(getTodos())
             console.log("Success!");
+            setTodo({ name: '', description: '' })
         } catch (err) {
             console.log("Error!", err);
             eventBusService.showErrorMsg('Cannot add todo!')
