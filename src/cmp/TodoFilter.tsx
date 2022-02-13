@@ -1,11 +1,15 @@
 import { useForm } from "../hooks/useForm"
 
-export const TodoFilter = () => {
+interface PropType {
+    onChangeFilter: Function
+}
+
+export const TodoFilter = ({ onChangeFilter }: PropType) => {
 
     const [filterBy, handleChange] = useForm({
         isDone: false,
         name: '',
-    })
+    }, onChangeFilter)
 
     const { isDone, name } = filterBy
 
