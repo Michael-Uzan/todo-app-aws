@@ -21,7 +21,7 @@ export const ConfrimSignin = () => {
             if (ev) ev.preventDefault();
             await userService.confirmSignUp(loggedInUser.username, confrim.code)
             eventBusService.showSuccessMsg(`Verfication Complete !`)
-            history.push('/todo-app')
+            history.push('/login')
         } catch (error) {
             console.log('error confrim user ', error);
             eventBusService.showErrorMsg(`Incorrect Verfication Code!`)
