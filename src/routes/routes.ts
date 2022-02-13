@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { ConfrimSignin } from "../pages/ConfrimSignin";
 import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
@@ -8,7 +9,7 @@ import { TodoEdit } from "../pages/TodoEdit";
 
 interface IRoutes {
     path: string,
-    component: any
+    component: FunctionComponent | any
 }
 
 const routes: IRoutes[] = [

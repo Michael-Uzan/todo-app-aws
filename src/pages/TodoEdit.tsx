@@ -1,12 +1,13 @@
 import { FormEvent, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { ExtractRouteParams } from "react-router"
+import { match, useHistory } from "react-router-dom"
 import { Loading } from "../cmp/Loading"
 import { useForm } from "../hooks/useForm"
 import { eventBusService } from "../services/event-bus.service"
 import { todoService } from "../services/todo.service"
 
 interface PropType {
-    match: any
+    match: match | any /* I Had probleam define match correctly */
 }
 
 export const TodoEdit = ({ match }: PropType) => {
@@ -19,9 +20,11 @@ export const TodoEdit = ({ match }: PropType) => {
     }, [])
 
     const loadTodo = async () => {
-        const { todoId } = match.params
-        const todo = await todoService.getById(todoId)
-        setTodo(todo)
+        const todoId: string | null = match?.params?.todoId
+        if (todoId) {
+            const todo = await todoService.getById(todoId)
+            setTodo(todo)
+        }
     }
 
     const onSaveTodo = async (ev: FormEvent<HTMLFormElement> | null = null) => {

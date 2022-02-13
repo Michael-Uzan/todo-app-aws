@@ -12,10 +12,11 @@ export const todoService = {
     getById
 }
 
+/* I Had a problem define type of GrpahQl result correctly*/
+
 async function query(): Promise<GraphQLResult> {
     try {
-        const todos: any = await API.graphql(graphqlOperation(listTodos));
-        console.log('todos', todos)
+        const todos: any | GraphQLResult = await API.graphql(graphqlOperation(listTodos));
         return todos
     } catch (err) {
         console.log("Error! get todos", err);
@@ -25,8 +26,7 @@ async function query(): Promise<GraphQLResult> {
 
 async function addTodo(newTodo: ITodo): Promise<GraphQLResult> {
     try {
-        const addedTodo: any = await API.graphql(graphqlOperation(createTodo, { input: newTodo }));
-        console.log("add todo Success!");
+        const addedTodo: any | GraphQLResult = await API.graphql(graphqlOperation(createTodo, { input: newTodo }));
         return addedTodo
     } catch (err) {
         console.log("Error! add todo", err);
@@ -36,8 +36,7 @@ async function addTodo(newTodo: ITodo): Promise<GraphQLResult> {
 
 async function removeTodo(todoId: string) {
     try {
-        const deletedTodo: any = await API.graphql(graphqlOperation(deleteTodo, { input: { id: todoId } }));
-        console.log("delete todo Success!");
+        const deletedTodo: any | GraphQLResult = await API.graphql(graphqlOperation(deleteTodo, { input: { id: todoId } }));
         return deletedTodo
     } catch (err) {
         console.log("Error! delete todo", err);
@@ -51,8 +50,7 @@ async function saveTodo(newTodo: ITodo) {
         delete newTodo.updatedAt
         delete newTodo.owner
 
-        const updatedTodo: any = await API.graphql(graphqlOperation(updateTodo, { input: newTodo }));
-        console.log("update todo Success!");
+        const updatedTodo: any | GraphQLResult = await API.graphql(graphqlOperation(updateTodo, { input: newTodo }));
         return updatedTodo
     } catch (err) {
         console.log("Error! update todo", err);
@@ -62,8 +60,7 @@ async function saveTodo(newTodo: ITodo) {
 
 async function getById(todoId: string) {
     try {
-        console.log('todoId', todoId)
-        let todo: any = await API.graphql(graphqlOperation(getTodo, { id: todoId }));
+        let todo: any | GraphQLResult = await API.graphql(graphqlOperation(getTodo, { id: todoId }));
         return todo.data.getTodo
     } catch (err) {
         console.log(`Error! get todo ${todoId}`, err);

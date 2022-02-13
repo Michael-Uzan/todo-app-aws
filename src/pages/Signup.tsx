@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../hooks/useForm'
 import { useDispatch } from 'react-redux';
 import { onSignup } from '../store/actions/userActions';
+import { History } from 'history';
 
-export const Signup = ({ history }: any) => {
+interface PropType {
+    history: History
+}
+
+export const Signup = ({ history }: PropType) => {
 
     const dispatch = useDispatch()
 
