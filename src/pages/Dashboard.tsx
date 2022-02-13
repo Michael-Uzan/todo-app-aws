@@ -2,12 +2,13 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { ProgressbarDone } from "../cmp/ProgressbarDone"
+import { UserState } from "../interface/IUserStore"
 import { RootState } from "../store"
 
 export const Dashboard = () => {
 
     const history = useHistory()
-    const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
+    const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
     const todos: any = useSelector((state: RootState) => state.todoModule.todos)
 
     useEffect(() => {

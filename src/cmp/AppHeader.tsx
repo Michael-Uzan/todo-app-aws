@@ -4,12 +4,13 @@ import { RootState } from '../store'
 import { onLogout } from '../store/actions/userActions';
 import { useState } from 'react';
 import logo from '../assets/imgs/logo.jpg';
+import { UserState } from '../interface/IUserStore';
 
 export const AppHeader = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
+    const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 

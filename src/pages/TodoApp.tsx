@@ -2,11 +2,12 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AddTodo } from '../cmp/AddTodo';
 import { TodoList } from '../cmp/TodoList';
+import { UserState } from '../interface/IUserStore';
 import { RootState } from '../store';
 
 export const TodoApp = () => {
 
-    const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
+    const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
 
     if (!loggedInUser) return (
         <section className="todo-app tac flex direction-col align-center">

@@ -2,6 +2,7 @@ import { FormEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
+import { UserState } from '../interface/IUserStore';
 import { eventBusService } from '../services/event-bus.service';
 import { userService } from '../services/user.service';
 import { RootState } from '../store'
@@ -9,7 +10,7 @@ import { RootState } from '../store'
 export const ConfrimSignin = () => {
 
     const history = useHistory()
-    const loggedInUser: any = useSelector((state: RootState) => state.userModule.loggedInUser)
+    const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
 
     const [confrim, handleChange] = useForm({
         code: '',

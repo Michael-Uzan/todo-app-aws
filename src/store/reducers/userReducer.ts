@@ -1,8 +1,10 @@
-const initialState = {
+import { UserAction, UserState } from "../../interface/IUserStore";
+
+const initialState: UserState = {
   loggedInUser: null
 }
 
-export function userReducer(state = initialState, action: any) {
+export function userReducer(state: UserState = initialState, action: UserAction) {
   var newState = state;
   switch (action.type) {
     case 'SET_USER':
