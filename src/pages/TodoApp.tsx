@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AddTodo } from '../cmp/AddTodo';
+import { TodoFilter } from '../cmp/TodoFilter';
 import { TodoList } from '../cmp/TodoList';
 import { UserState } from '../interface/IUserStore';
 import { RootState } from '../store';
@@ -19,6 +20,7 @@ export const TodoApp = () => {
     return (
         < section className="todo-app tac flex direction-col align-center" >
             <h1>Todo App</h1>
+            <TodoFilter />
             <AddTodo />
             <TodoList />
         </ section>

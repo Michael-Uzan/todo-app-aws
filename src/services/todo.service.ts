@@ -16,7 +16,7 @@ export const todoService = {
 
 async function query(): Promise<GraphQLResult> {
     try {
-        const todos: any | GraphQLResult = await API.graphql(graphqlOperation(listTodos));
+        const todos: any | GraphQLResult = await API.graphql(graphqlOperation(listTodos, { filter: { isDone: { eq: false }, name: { contains: "test" } } }));
         return todos
     } catch (err) {
         console.log("Error! get todos", err);
