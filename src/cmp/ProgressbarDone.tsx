@@ -30,7 +30,7 @@ export const ProgressbarDone = ({ todos }: PropType) => {
                     value={getPrecentDone()}
                     styles={buildStyles({
                         pathColor: '#61bd4fb1',
-                        trailColor: "#ffffffee",
+                        trailColor: '#f9f7f6',
                     })}
                 >
                     <div className="text-done">
