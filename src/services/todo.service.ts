@@ -1,6 +1,8 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { createTodo, deleteTodo, updateTodo } from "../graphql/mutations";
 import { getTodo, listTodos } from "../graphql/queries";
+import { IFilterBy } from "../interface/IFilterBy";
+import { IFilterQuery } from "../interface/IFilterQuery";
 import { GraphQLResult } from "../interface/IGraphqlResult";
 import { ITodo } from "../interface/ITodo";
 
@@ -14,9 +16,10 @@ export const todoService = {
 
 /* I Had a problem define type of GrpahQl result correctly*/
 
-async function query(): Promise<GraphQLResult> {
+async function query(filterBy: IFilterBy): Promise<GraphQLResult> {
     try {
-        const todos: any | GraphQLResult = await API.graphql(graphqlOperation(listTodos, { filter: { isDone: { eq: false }, name: { contains: "test" } } }));
+        const filterQuery: IFilterQuery = _getFilterQuery(filterBy)
+        const todos: any | GraphQLResult = await API.graphql(graphqlOperation(listTodos, { filter: filterQuery }));
         return todos
     } catch (err) {
         console.log("Error! get todos", err);
@@ -66,5 +69,15 @@ async function getById(todoId: string) {
         console.log(`Error! get todo ${todoId}`, err);
         throw new Error('canot get todo')
     }
+}
+
+function _getFilterQuery(filterBy: IFilterBy): IFilterQuery {
+    const filterQuery: IFilterQuery = {
+        name: { contains: filterBy.name }
+    }
+    if (filterBy.isDone) {
+        filterQuery.isDone = { eq: false }
+    }
+    return filterQuery
 }
 

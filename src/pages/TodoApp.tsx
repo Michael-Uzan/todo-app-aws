@@ -14,7 +14,6 @@ export const TodoApp = () => {
     const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
 
     const onChangeFilter = (filterBy: IFilterBy) => {
-        console.log(filterBy)
         dispatch(setFilterBy(filterBy));
         dispatch(getTodos());
     };

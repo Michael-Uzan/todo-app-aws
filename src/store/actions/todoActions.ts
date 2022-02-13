@@ -1,12 +1,15 @@
+import { RootState } from ".."
 import { IFilterBy } from "../../interface/IFilterBy"
 import { ITodo } from "../../interface/ITodo"
+import { TodoState } from "../../interface/ITodoStore"
 import { eventBusService } from "../../services/event-bus.service"
 import { todoService } from "../../services/todo.service"
 
 export function getTodos() {
-    return async (dispatch: Function) => {
+    return async (dispatch: Function, getState: Function) => {
+        const { filterBy }: TodoState = getState().todoModule
         try {
-            const todos = await todoService.query()
+            const todos = await todoService.query(filterBy as IFilterBy)
             dispatch({
                 type: 'SET_TODOS',
                 todos
