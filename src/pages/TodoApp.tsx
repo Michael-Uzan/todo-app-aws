@@ -6,6 +6,7 @@ import { TodoList } from '../cmp/TodoList';
 import { IFilterBy } from '../interface/IFilterBy';
 import { UserState } from '../interface/IUserStore';
 import { RootState } from '../store';
+import { getTodos, setFilterBy } from '../store/actions/todoActions';
 
 export const TodoApp = () => {
 
@@ -14,8 +15,8 @@ export const TodoApp = () => {
 
     const onChangeFilter = (filterBy: IFilterBy) => {
         console.log(filterBy)
-        // dispatch(setFilterBy(filterBy));
-        // dispatch(loadRobots());
+        dispatch(setFilterBy(filterBy));
+        dispatch(getTodos());
     };
 
     if (!loggedInUser) return (

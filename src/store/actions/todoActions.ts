@@ -1,3 +1,4 @@
+import { IFilterBy } from "../../interface/IFilterBy"
 import { ITodo } from "../../interface/ITodo"
 import { eventBusService } from "../../services/event-bus.service"
 import { todoService } from "../../services/todo.service"
@@ -31,5 +32,11 @@ export function updatedTodo(newTodo: ITodo) {
             eventBusService.showErrorMsg('Cannot update todo!')
             throw err
         }
+    }
+}
+
+export function setFilterBy(filterBy: IFilterBy) {
+    return (dispatch: Function) => {
+        dispatch({ type: 'SET_FILTER_BY', filterBy })
     }
 }
