@@ -15,7 +15,7 @@ export const TodoPreview = ({ todo }: PropType) => {
 
     const onRemoveTodo = async () => {
         try {
-            const deletedTodo = await todoService.removeTodo(todo.id as string)
+            await todoService.removeTodo(todo.id as string)
             dispatch(getTodos())
         } catch (err) {
             console.log('cannot delete todo', err)

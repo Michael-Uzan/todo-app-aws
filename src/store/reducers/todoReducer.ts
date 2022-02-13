@@ -19,7 +19,6 @@ export function todoReducer(state: TodoState = initialState, action: TodoAction)
             newState = { ...state, filterBy: action?.filterBy }
             break;
         default:
-            newState = newState
             break;
     }
     return newState;

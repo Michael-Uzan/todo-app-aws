@@ -1,4 +1,3 @@
-import { RootState } from ".."
 import { IFilterBy } from "../../interface/IFilterBy"
 import { ITodo } from "../../interface/ITodo"
 import { TodoState } from "../../interface/ITodoStore"

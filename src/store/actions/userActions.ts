@@ -42,7 +42,7 @@ export function onSignup(credentials: ICredentials) {
 export function onLogout() {
     return async (dispatch: Function) => {
         try {
-            const user = await userService.logout()
+            await userService.logout()
             dispatch({
                 type: 'SET_USER',
                 user: null
