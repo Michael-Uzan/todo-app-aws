@@ -53,7 +53,7 @@ export const Login = () => {
             <div className="quick-login">
                 <h3>* For quick login try: </h3>
                 <small>
-                    Username: aa <br />
+                    Username: junior <br />
                     Password: 12345678
                 </small>
             </div>

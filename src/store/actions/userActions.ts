@@ -34,6 +34,7 @@ export function onSignup(credentials: ICredentials) {
         } catch (err) {
             console.log('Cannot signup', err)
             eventBusService.showErrorMsg('Sorry cannot Signup!')
+            throw err
         }
     }
 }
