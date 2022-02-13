@@ -1,11 +1,12 @@
 import { ICredentials } from "../../interface/ICredentials.js";
+import { CognitoUser } from 'amazon-cognito-identity-js';
 import { eventBusService } from "../../services/event-bus.service";
 import { userService } from "../../services/user.service";
 
 export function onLogin(credentials: ICredentials) {
     return async (dispatch: Function) => {
         try {
-            const user = await userService.login(credentials)
+            const user: CognitoUser | any = await userService.login(credentials)
             dispatch({
                 type: 'SET_USER',
                 user

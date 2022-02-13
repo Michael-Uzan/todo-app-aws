@@ -2,29 +2,24 @@ import { CognitoUser } from 'amazon-cognito-identity-js'
 import { Auth } from 'aws-amplify'
 import { ICredentials } from '../interface/ICredentials'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-
 export const userService = {
     login,
     logout,
     signup,
     confirmSignUp,
     resendCode
-    // getLoggedinUser,
 }
 
-async function login(credentials: ICredentials) {
+async function login(credentials: ICredentials): Promise<CognitoUser> {
     const { username, password } = credentials;
     const user = await Auth.signIn(username, password);
     if (!user) {
         throw new Error('login service error')
     }
-    console.log('user logedin sucess', user)
     return user
-    // return _saveLocalUser(user)
 }
 
-async function signup(credentials: ICredentials) {
+async function signup(credentials: ICredentials): Promise<CognitoUser> {
     const { username, password, email } = credentials;
     const { user } = await Auth.signUp({
         username,
@@ -37,7 +32,6 @@ async function signup(credentials: ICredentials) {
         throw new Error('signup service error')
     }
     return user
-    // return _saveLocalUser(user)
 }
 
 async function confirmSignUp(username: string, code: string) {
@@ -46,8 +40,6 @@ async function confirmSignUp(username: string, code: string) {
             username,
             code,
         );
-        console.log('sucess confrim')
-
     } catch (err) {
         console.log('error confrim signin: ', err);
         throw new Error('confrim signin service error')
@@ -57,7 +49,6 @@ async function confirmSignUp(username: string, code: string) {
 async function resendCode(username: string) {
     try {
         await Auth.resendSignUp(username);
-        console.log('code resent successfully');
     } catch (err) {
         console.log('error resending code: ', err);
         throw new Error('error resending code')
@@ -71,13 +62,4 @@ async function logout() {
         console.log('error signing out: ', err);
         throw new Error('logout service error')
     }
-}
-
-// function getLoggedinUser() {
-//     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
-// }
-
-function _saveLocalUser(user: CognitoUser) {
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
 }

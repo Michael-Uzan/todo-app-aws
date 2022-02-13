@@ -56,7 +56,7 @@ export const Signup = ({ history }: any) => {
                     required
                 />
                 <small>* Password must contain  <br />
-                    at least 8 charcters</small>
+                    at least 8 characters</small>
                 <button>Signup</button>
             </form>
             <Link className="to-login-signup" to="/login">Login?</Link>
