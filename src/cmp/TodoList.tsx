@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ITodo } from '../interface/ITodo';
+import { TodoState } from '../interface/ITodoStore';
 import { RootState } from '../store';
 import { getTodos } from '../store/actions/todoActions';
 import { Loading } from './Loading';
@@ -9,7 +10,7 @@ import { TodoPreview } from './TodoPreview';
 export const TodoList = () => {
 
     const dispatch = useDispatch()
-    const todos: any = useSelector((state: RootState) => state.todoModule.todos)
+    const { todos }: TodoState = useSelector((state: RootState) => state.todoModule)
 
     useEffect(() => {
         loadTodos();

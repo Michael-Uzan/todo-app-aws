@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { ProgressbarDone } from "../cmp/ProgressbarDone"
+import { TodoState } from "../interface/ITodoStore"
 import { UserState } from "../interface/IUserStore"
 import { RootState } from "../store"
 
@@ -9,7 +10,7 @@ export const Dashboard = () => {
 
     const history = useHistory()
     const { loggedInUser }: UserState = useSelector((state: RootState) => state.userModule)
-    const todos: any = useSelector((state: RootState) => state.todoModule.todos)
+    const { todos }: TodoState = useSelector((state: RootState) => state.todoModule)
 
     useEffect(() => {
         if (!loggedInUser || !todos) history.push('/')
